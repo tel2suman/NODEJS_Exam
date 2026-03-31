@@ -109,7 +109,7 @@ class ProductController {
         await fs.promises.unlink(req.file.path);
       }
 
-      console.log("Error storing employee:", error);
+      console.log("Error storing product:", error);
 
       return res.status(500).send("Something went wrong");
     }
