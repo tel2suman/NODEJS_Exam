@@ -1,0 +1,31 @@
+{
+  "name": "nodejs_assesment_31_03_2026",
+  "version": "1.0.0",
+  "description": "assesment",
+  "license": "ISC",
+  "author": "Suman Bhattacharjee",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.9.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "joi": "^18.1.2",
+    "mongodb": "^7.1.1",
+    "mongoose": "^9.3.3",
+    "mongoose-slug-generator": "^1.0.4",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+    "nodemon": "^3.1.14",
+    "slugify": "^1.6.8"
+  }
+}
