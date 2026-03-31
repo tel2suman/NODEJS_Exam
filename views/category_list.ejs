@@ -1,0 +1,83 @@
+
+<%- include('layouts/header') %>
+
+    <%- include('layouts/nav') %>
+
+        <body>
+            <div class="container-xl">
+                <div class="row mt-5">
+                    <div class="col-4 mb-0 border-bottom border-primary">
+                        <h2 class="lead fw-normal fs-3 text-capitalize">List of categories:</h2>
+                    </div>
+                    <div class="col-5 mb-0 border-bottom border-primary">
+                        <h4 class="lead fw-bold fs-3 text-capitalize">number of categories: <%= categories.length %>
+                        </h4>
+                    </div>
+                    <div class="col-3 mb-0 border-bottom border-primary">
+                        <div class="text-end">
+                            <a href="/category/view" class="btn btn-lg btn-primary w-100 mb-3">Create Category
+                                <i class="bi bi-plus-square mx-lg-2 mx-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive px-0">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-capitalize text-center fs-6" scope="col">Serial No.</th>
+                                    <th class="text-capitalize text-center fs-6" scope="col">Id</th>
+                                    <th class="text-capitalize text-center fs-6" scope="col">Category Name</th>
+                                    <th class="text-capitalize text-center fs-6" scope="col">Category Slug</th>
+                                    <th class="text-capitalize text-center fs-5" colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <% if (categories.length===0) { %>
+
+                                <tr>
+                                    <td class="fs-5 text-capitalize fw-normal text-center" colspan="14">No Records Found
+                                    </td>
+                                </tr>
+
+                                <% } else { %>
+
+                                    <% categories.forEach((cat, index)=> { %>
+
+                                        <tbody class="table-group-divider">
+                                            <tr>
+                                                <td class="fs-5 text-capitalize fw-normal text-center" scope="row">
+                                                    <%= index + 1 %>
+                                                </td>
+                                                <td class="fs-5 text-capitalize fw-normal text-center">
+                                                    <%= cat._id.toString().slice(20, 24) %>
+                                                </td>
+                                                <td class="fs-5 text-capitalize fw-normal text-center">
+                                                    <%= cat.categoryName %>
+                                                </td>
+                                                <td class="fs-5 text-capitalize fw-normal text-center">
+                                                    <%= cat.categorySlug %>
+                                                </td>
+
+                                                <td>
+                                                    <a href="/edit/category/<%=cat._id%>"
+                                                        class="btn btn-lg btn-warning w-100">Edit Category
+                                                        <i class="bi bi-pencil-square mx-lg-2 mx-1"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/softdelete/category/<%=cat._id%>"
+                                                        class="btn btn-lg btn-danger w-100">Delete Category
+                                                        <i class="bi bi-trash3 mx-lg-2 mx-1"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <% })%>
+                                        <% } %>
+                                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        </body>

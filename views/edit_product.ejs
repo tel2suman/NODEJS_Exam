@@ -1,0 +1,47 @@
+
+<%- include('layouts/header') %>
+
+<%- include('layouts/nav') %>
+
+<div class="container-xl">
+    <div class="row mt-5">
+        <h2 class="lead fw-normal fs-3 text-capitalize">Update Product</h2>
+        <form action="/update/product/<%=data._id %>" method="post" class="p-4 border rounded-3 bg-light"
+            enctype="multipart/form-data">
+            <div class="row p-3 bg-light-400">
+                <div class="mb-3">
+                    <label for="name" class="form-label fs-5">Product Name</label>
+                    <input type="text" class="form-control field-control" placeholder="Enter Product Name" name="name"
+                        value="<%=data.name %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label fs-5">Product Description</label>
+                    <input type="text" class="form-control field-control" placeholder="Enter Product Description"
+                        name="description" value="<%=data.description %>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label fs-5">Product Image</label>
+                    <% if (data.image) { %>
+                        <div class="mb-2">
+                            <img src="<%= data.image %>" width="100" class="rounded"
+                                alt="Product Image Not Available">
+                        </div>
+                        <% } %>
+                            <input type="file" class="form-control field-control" name="image"
+                                value="<%=data.image %>">
+                </div>
+
+                <div class="mb-3">
+                    <label for="slug" class="form-label fs-5">Product Slug</label>
+                    <input type="text" class="form-control field-control" placeholder="Enter Product Slug" name="slug"
+                        value="<%=data.slug %>" required>
+                </div>
+
+                <div class="col-3 my-3">
+                    <button type="submit" class="btn btn-lg btn-primary">Update Details</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

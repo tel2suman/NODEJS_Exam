@@ -1,22 +1,23 @@
 
 <%- include('layouts/header') %>
 
-<h1>Product List</h1>
+<%- include('layouts/nav') %>
 
 <body>
     <div class="container-xl">
         <div class="row mt-5">
             <div class="col-4 mb-0 border-bottom border-primary">
-                <h2 class="lead fw-normal fs-3 text-capitalize">List of students:</h2>
+                <h2 class="lead fw-normal fs-3 text-capitalize">List of products:</h2>
             </div>
             <div class="col-5 mb-0 border-bottom border-primary">
-                <h4 class="lead fw-bold fs-3 text-capitalize">number of students: <%= data.length %>
+                <h4 class="lead fw-bold fs-3 text-capitalize">number of products: <%= data.length %>
                 </h4>
             </div>
             <div class="col-3 mb-0 border-bottom border-primary">
                 <div class="text-end">
-                    <a href="/add/product" class="btn btn-lg btn-primary w-100 mb-3">Create Product<i
-                            class="fa-solid fa-plus mx-lg-2 mx-1"></i></a>
+                    <a href="/add/product" class="btn btn-lg btn-primary w-100 mb-3">Create Product
+                        <i class="bi bi-plus-square mx-lg-2 mx-1"></i>
+                    </a>
                 </div>
             </div>
 
@@ -28,8 +29,10 @@
                             <th class="text-capitalize text-center fs-6" scope="col">Id</th>
                             <th class="text-capitalize text-center fs-6" scope="col">Product Name</th>
                             <th class="text-capitalize text-center fs-6" scope="col">Product Category</th>
+                            <th class="text-capitalize text-center fs-6" scope="col">Product Image</th>
                             <th class="text-capitalize text-center fs-6" scope="col">Product Description</th>
                             <th class="text-capitalize text-center fs-6" scope="col">Product Slug</th>
+                            <th class="text-capitalize text-center fs-5" colspan="2">Action</th>
                         </tr>
                     </thead>
                     <% if (data.length===0) { %>
@@ -57,24 +60,29 @@
                                 <%= product.category?.categoryName || "No Category" %>
                             </td>
                             <td class="fs-5 text-capitalize fw-normal text-center">
+                                <% if(product.image){ %>
+                                    <img src="<%= product.image %>" class="img-fluid w-100" style="object-fit: cover; height: 150px;" alt="..." />
+                                <% } %>
+                            </td>
+                            <td class="fs-5 text-capitalize fw-normal text-center">
                                 <%= product.description %>
                             </td>
                             <td class="fs-5 text-capitalize fw-normal text-center">
                                 <%= product.slug %>
                             </td>
 
-                            <!-- <td>
-                                <a href="/product/edit/<%=product._id%>"
-                                    class="btn btn-lg btn-warning w-100">Edit Product<i
-                                        class="fa-regular fa-pen-to-square mx-lg-2 mx-1"></i>
+                            <td>
+                                <a href="/edit/product/<%=product._id%>"
+                                    class="btn btn-lg btn-warning w-100">Edit Product
+                                    <i class="bi bi-pencil-square mx-lg-2 mx-1"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="/product/softdelete/<%=product._id%>"
-                                    class="btn btn-lg btn-danger w-100">Delete Product<i
-                                        class="fa-regular fa-trash-can mx-lg-2 mx-1"></i>
+                                <a href="/delete/product/<%=product._id%>"
+                                    class="btn btn-lg btn-danger w-100">Delete Product
+                                    <i class="bi bi-trash3 mx-lg-2 mx-1"></i>
                                 </a>
-                            </td> -->
+                            </td>
                         </tr>
                         <% })%>
                     <% } %>

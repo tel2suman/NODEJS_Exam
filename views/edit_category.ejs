@@ -1,0 +1,24 @@
+
+<%- include('layouts/header') %>
+
+    <%- include('layouts/nav') %>
+
+        <div class="container-xl">
+            <div class="row mt-5">
+                <h2 class="lead fw-normal fs-3 text-capitalize">Update Category</h2>
+                <form action="/update/category/<%=data._id %>" method="post" class="p-4 border rounded-3 bg-light"
+                    enctype="multipart/form-data">
+                    <div class="row p-3 bg-light-400">
+                        <div class="mb-3">
+                            <label for="categoryName" class="form-label fs-5">Category Name</label>
+                            <input type="text" class="form-control field-control" placeholder="Enter Category Name"
+                                name="categoryName" value="<%=data.categoryName %>" required>
+                        </div>
+
+                        <div class="col-3 my-3">
+                            <button type="submit" class="btn btn-lg btn-primary">Update Details</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
